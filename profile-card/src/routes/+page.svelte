@@ -107,7 +107,8 @@
     nav{
         top: 100%;
         position: absolute;
-        translate: 0 calc(-50% + 11px);
+        translate: -50% calc(-50% + 11px);
+        left: 50%;
     }
     nav ul{
         display: grid;
