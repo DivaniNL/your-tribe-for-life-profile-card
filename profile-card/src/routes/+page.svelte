@@ -222,7 +222,7 @@
         }
         .link-bubble.toggler input{
             position: absolute;
-            height: 100%;
+            height: 60px;
             width: 60px;
             cursor: pointer;
             appearance: none;
@@ -240,10 +240,14 @@
         }
         .link-bubble.icon a{
             transform: rotate(calc(360deg / -6 * var(--i))) rotate(180deg);
+            visibility: hidden;
         }
         #container:has(.link-bubble.toggler input:checked) .link-bubble.icon{
             rotate: 180deg;
             scale: 1;
+        }
+        #container:has(.link-bubble.toggler input:checked) .link-bubble.icon a{
+            visibility: visible;
         }
         nav:after{
             width: 120px;
