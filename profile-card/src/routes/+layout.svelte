@@ -29,6 +29,7 @@
 			--color-red: #921F10;
 			--color-purple: #7020A9;
 			--color-green: #008A42;
+			--color-orange: #C03B00;
 			--color-white: #fff;
 			--color-black: #000;
 			--text-s: 0.875rem; /* 14px */

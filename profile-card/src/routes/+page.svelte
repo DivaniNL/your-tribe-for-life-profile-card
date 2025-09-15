@@ -18,8 +18,8 @@
         </div>
 
         <nav>
-            <ul class="link_bubbles">
-                <li class="link-bubble">
+            <ul class="link-bubbles" style="--i:0;">
+                <li class="link-bubble icon">
                     <a href="/education">
                         <div class="svg-container bg-pink">
                             <svg xmlns="http://www.w3.org/2000/svg" width="35" viewBox="0 0 640 640">
@@ -29,7 +29,7 @@
                         <span>Opleidingen</span>
                     </a>
                 </li>
-                <li class="link-bubble">
+                <li class="link-bubble icon" style="--i:1;">
                     <a href="/work">
                         <div class="svg-container bg-red">
                             <svg xmlns="http://www.w3.org/2000/svg" width="35" viewBox="0 0 640 640">
@@ -39,7 +39,7 @@
                         <span>Werk</span>
                     </a>
                 </li>
-                <li class="link-bubble">
+                <li class="link-bubble icon" style="--i:2;">
                     <a href="/hobbys">
                         <div class="svg-container bg-purple">
                             <svg xmlns="http://www.w3.org/2000/svg" width="35" viewBox="0 0 640 640">
@@ -49,7 +49,7 @@
                         <span>Hobby's</span>
                     </a>
                 </li>
-                <li class="link-bubble">
+                <li class="link-bubble icon" style="--i:3;">
                     <a href="/facts">
                         <div class="svg-container bg-green">
                             <svg xmlns="http://www.w3.org/2000/svg" width="35" viewBox="0 0 640 640">
@@ -59,7 +59,15 @@
                         <span>Feitjes</span>
                     </a>
                 </li>
+                <li class="link-bubble toggler">
+                    <div class="svg-container bg-orange">
+                        <input type="checkbox" id="toggle" name="toggle" />
+                        <svg width="35" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M320 576C461.4 576 576 461.4 576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576zM288 224C288 206.3 302.3 192 320 192C337.7 192 352 206.3 352 224C352 241.7 337.7 256 320 256C302.3 256 288 241.7 288 224zM280 288L328 288C341.3 288 352 298.7 352 312L352 400L360 400C373.3 400 384 410.7 384 424C384 437.3 373.3 448 360 448L280 448C266.7 448 256 437.3 256 424C256 410.7 266.7 400 280 400L304 400L304 336L280 336C266.7 336 256 325.3 256 312C256 298.7 266.7 288 280 288z"/></svg>
+                    </div>
+                    <label for="toggle">Lees meer</label>
+                </li>
             </ul>
+
         </nav>
     </section>
 </div>
@@ -121,6 +129,12 @@
         gap: 10px;
         padding: 0 8px;
     }
+    nav ul li{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
     .svg-container{
         width: 40px;
         height: 40px;
@@ -128,13 +142,14 @@
         border-radius: 50%;
         display: flex;
         justify-content: center;
+        flex-direction: column;
         align-items: center;
         outline: 6px solid #0076B1;
         transition: 0.2s ease;
-        &:hover{
-            outline-color: white;
-            scale: 1.1;
-        }
+    }
+    .svg-container:hover{
+        outline-color: white;
+        scale: 1.1;
     }
     .svg-container svg{
         width: 20px;
@@ -172,6 +187,10 @@
         background: #008A42;
         background: var(--color-green);
     }
+    .svg-container.bg-orange{
+        background: #C03B00;
+        background: var(--color-orange);
+    }
     .link-bubble span{
         font-size: 12px;
     }
@@ -188,6 +207,64 @@
         }
         nav ul li a{
             padding: 0 12px;
+        }
+    }
+    .link-bubble.toggler{
+        display: none;
+    }
+    @supports selector(*:has(*)) {
+        .link-bubble.toggler{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .link-bubble.toggler input{
+            position: absolute;
+            height: 100%;
+            width: 60px;
+            cursor: pointer;
+            appearance: none;
+            border-radius: 50%;
+        }
+        .link-bubble.icon{
+            position: absolute;
+            left: 0;
+            list-style: none;
+            transition: 0.5s;
+            transform-origin: 200px;
+            transform: rotate(calc(360deg / 6 * var(--i)));
+            scale: 0;
+            transition-delay: calc(0.05s * var(--i));
+        }
+        .link-bubble.icon a{
+            transform: rotate(calc(360deg / -6 * var(--i))) rotate(180deg);
+        }
+        #container:has(.link-bubble.toggler input:checked) .link-bubble.icon{
+            rotate: 180deg;
+            scale: 1;
+        }
+        nav:after{
+            width: 120px;
+            translate: -50% calc(-70% + 11px);
+            left: 50%;
+        }
+        ul.link-bubbles{
+            position: relative;
+            width: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #container:has(.link-bubble.toggler input:checked) .link-bubble.toggler label{
+            visibility: hidden;
+        }
+        #container:has(.link-bubble.toggler input:checked) .link-bubble.toggler label:after{
+            content: "Sluit menu";
+            visibility: visible;
+            position: absolute;
+            left: 50%;
+            translate: -50% 0;
         }
     }
 </style>
