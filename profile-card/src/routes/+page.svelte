@@ -233,10 +233,13 @@
             left: 0;
             list-style: none;
             transition: 0.5s;
-            transform-origin: 200px;
+            transform-origin: 140px;
             transform: rotate(calc(360deg / 6 * var(--i)));
             scale: 0;
             transition-delay: calc(0.05s * var(--i));
+            @media (min-width: 500px){
+                transform-origin: 200px;
+            }
         }
         .link-bubble.icon a{
             transform: rotate(calc(360deg / -6 * var(--i))) rotate(180deg);
@@ -256,10 +259,13 @@
         }
         ul.link-bubbles{
             position: relative;
-            width: 400px;
+            width: 280px;
             display: flex;
             align-items: center;
             justify-content: center;
+            @media (min-width: 500px){
+                width: 400px;
+            }
         }
         #container:has(.link-bubble.toggler input:checked) .link-bubble.toggler label{
             visibility: hidden;
