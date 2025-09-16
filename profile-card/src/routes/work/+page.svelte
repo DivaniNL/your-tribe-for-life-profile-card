@@ -69,12 +69,10 @@
     .profile-card{
         padding-left: 16px;
         padding-right: 16px;
+        margin-bottom: 100px;
     }
     #container {
         max-width: 1024px;
-    }
-    section.hobbies {
-        margin-bottom: 100px;
     }
     table {
         border-collapse: separate;

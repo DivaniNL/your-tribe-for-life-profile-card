@@ -23,13 +23,10 @@
   function togglePlay(selectedSong, button) {
     // Pause all other songs
     songs.forEach(song => {
-        console.log(song);
       if (song !== selectedSong && song.playing) {
         song.audio.pause();
         song.playing = false;
-        console.log("id" + song.key)
         const button = document.querySelector(`.button-${song.key}`);
-        console.log(button);
         if (button) button.textContent = '▶️'; // set to play icon
       }
     });
@@ -38,6 +35,7 @@
       songs[selectedSong.key - 1].audio.pause();
       songs[selectedSong.key - 1].playing = false;
       selectedSong.playing = false;
+      
     } else {
     button.innerHTML = pauseIcon
       songs[selectedSong.key - 1].audio.play();
@@ -112,6 +110,7 @@
     .profile-card{
         padding-left: 16px;
         padding-right: 16px;
+        margin-bottom: 100px;
     }
     #container {
         max-width: 1024px;
