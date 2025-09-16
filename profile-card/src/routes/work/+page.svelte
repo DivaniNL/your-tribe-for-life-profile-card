@@ -151,5 +151,25 @@
     table.table-primary tbody tr td {
         font-size: 12px;
     }
+    @media (max-width: 500px){
+            tr{
+                display: flex !important;
+                flex-direction: column;
+                th{
+                    display: none
+                }
+                td{
+                    &:first-child{
+                        background-color: #2c1fb8 !important;
+                        color: white !important;
+                        border-bottom-left-radius: 0 !important
+                    }
+                    &:last-child{
+                        background-color: white !important;
+                        color: #2c1fb8 !important;
+                    }
 
+                }
+            }
+        }
 </style>

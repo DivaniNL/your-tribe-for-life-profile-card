@@ -1,6 +1,51 @@
 <script>
+    import { onMount } from 'svelte';
     let { data } = $props();
-    let opleidingen = data.opleidingen;
+    let feitjes_over_mij = data.feitjes_over_mij;
+     let songs = [];
+  const playIcon = '▶️';
+  const pauseIcon = '⏸️';
+
+  onMount(() => {
+    // Create Audio objects for each song
+    songs = data.liedjes[0].waarde.map(liedje => ({
+      ...liedje,
+      audio: new Audio(`/assets/media/${liedje.bestand}`),
+      playing: false
+    }));
+
+    songs.forEach(song => {
+      song.audio.volume = 0.3;
+      song.audio.onended = () => (song.playing = false); // reset playing state when ended
+    });
+  });
+
+  function togglePlay(selectedSong, button) {
+    // Pause all other songs
+    songs.forEach(song => {
+        console.log(song);
+      if (song !== selectedSong && song.playing) {
+        song.audio.pause();
+        song.playing = false;
+        console.log("id" + song.key)
+        const button = document.querySelector(`.button-${song.key}`);
+        console.log(button);
+        if (button) button.textContent = '▶️'; // set to play icon
+      }
+    });
+    if (selectedSong.playing) {
+    button.innerHTML = playIcon
+      songs[selectedSong.key - 1].audio.pause();
+      songs[selectedSong.key - 1].playing = false;
+      selectedSong.playing = false;
+    } else {
+    button.innerHTML = pauseIcon
+      songs[selectedSong.key - 1].audio.play();
+      songs[selectedSong.key - 1].playing = true;
+        selectedSong.playing = true;
+        
+    }
+  }
 </script>
 
 <div id="container">
@@ -25,32 +70,39 @@
             />
         </picture>
         <div class="content-wrapper">
-            <h1 class="title-l">Opleidingen</h1>
-            <p class="text-l">Hieronder mijn Opleidingen</p>
+            <h1 class="title-l">Feitjes</h1>
+            <p class="text-l">Hieronder feitjes over mij</p>
         </div>
 
-        <table class="table-primary table-opleidingen">
-            <thead>
-                <tr>
-                    <th>Periode</th>
-                    <th>Studie</th>
-                </tr>
-            </thead>
+        <table class="table-primary table-feitjes">
 
             <tbody>
-                {#each opleidingen as opleiding}
-                    {#if opleiding.omschrijving}
-                        <tr>
-                            {#if opleiding.periode}
-                                <td>{opleiding.periode}</td>
-                            {:else}
-                                <td>Onbekende periode</td>
-                            {/if}
+                {#each feitjes_over_mij as feitje}                
+                    <tr>
+                        {#if feitje.label}
+                        <td>{feitje.label}</td>
+                        {/if}
 
-                            <td>{opleiding.omschrijving}</td>
-                        </tr>
-                    {/if}
+                        <td 
+                        style={feitje.label === "Favoriete kleur" ? `background-color: ${feitje.waarde} !important; color: #fff !important` : undefined}
+                        >
+                        {feitje.waarde}
+                        </td>
+                    </tr>
                 {/each}
+               <tr class="row-songs">
+                    <td class="vat">{data.liedjes[0].label}</td>
+                    <td>
+                    {#each data.liedjes[0].waarde as liedje, i}
+                        <div class="song">
+                            <button class="button-{i+1}" on:click={(e) => togglePlay(liedje, e.currentTarget)}>
+                                ▶️
+                            </button>
+                            <span>{liedje.key}. {liedje.titel} - {liedje.artiest}</span>
+                        </div>
+                    {/each}
+                    </td>
+                </tr>
             </tbody>
         </table>
     </section>
@@ -137,18 +189,26 @@
     table.table-primary tbody tr td {
         font-size: 12px;
     }
+    .song{
+        display: flex;
+        align-items: center;
+    }
+    button{
+        cursor: pointer;
+        appearance: none;
+        background: none;
+        border: 0;
+        font-size: 20px;
+        background-color: var(--color-white);
+    }
     @media (max-width: 500px){
         tr{
             display: flex !important;
             flex-direction: column;
-            th{
-                display: none
-            }
             td{
                 &:first-child{
                     background-color: #2c1fb8 !important;
                     color: white !important;
-                    border-bottom-left-radius: 0 !important
                 }
                 &:last-child{
                     background-color: white !important;
@@ -158,5 +218,4 @@
             }
         }
     }
-
 </style>
