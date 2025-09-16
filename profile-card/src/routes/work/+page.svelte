@@ -1,6 +1,6 @@
 <script>
     let { data } = $props();
-    let opleidingen = data.opleidingen;
+    let werkervaringen = data.werkervaringen;
 </script>
 
 <div id="container">
@@ -38,16 +38,25 @@
             </thead>
 
             <tbody>
-                {#each opleidingen as opleiding}
-                    {#if opleiding.omschrijving}
+                {#each werkervaringen as werkervaring}
+                    {#if werkervaring.functie}
                         <tr>
-                            {#if opleiding.periode}
-                                <td>{opleiding.periode}</td>
+                            {#if werkervaring.periode}
+                                <td>{werkervaring.periode}</td>
                             {:else}
                                 <td>Onbekende periode</td>
                             {/if}
 
-                            <td>{opleiding.omschrijving}</td>
+                            <td>
+                            {werkervaring.functie} bij
+                            {#if werkervaring.link}
+                                <a class="link-werkervaring" target="_blank" href={werkervaring.link}>
+                                {werkervaring.bedrijf}
+                                </a>
+                            {:else}
+                                {werkervaring.bedrijf}
+                            {/if}
+                            </td>
                         </tr>
                     {/if}
                 {/each}
@@ -63,6 +72,9 @@
     }
     #container {
         max-width: 1024px;
+    }
+    section.hobbies {
+        margin-bottom: 100px;
     }
     table {
         border-collapse: separate;
@@ -84,16 +96,18 @@
 
     table.table-primary th a,
     table.table-primary td a {
-        color: #2c1fb8;
-        color: var(--color-primary);
         font-weight: bold;
         transition: 0.2s ease;
+        text-decoration: underline;
     }
 
     table.table-primary th a:hover,
-    table.table-primary td a:hover {
-        color: #fff;
-        color: var(--color-white);
+    table.table-primary td a:hover,
+    table.table-primary th a:focus,
+    table.table-primary td a:focus
+    {
+        color: black;
+        text-decoration: underline;
     }
 
     table.table-primary thead tr th {
