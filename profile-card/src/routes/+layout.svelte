@@ -80,6 +80,37 @@
 				font-size: var(--title-m);
 			}
 		}
+
+
+		.profile-card{
+			position: relative;
+			padding: 80px 36px 60px 36px;
+			border-radius: 14px;
+			background: #2C1FB8;
+			background: var(--color-primary);
+			border: 4px solid #0076B1;
+			box-shadow: 0 8px 0 0 #0076B1;
+			margin-top: 100px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+		picture{
+			position: absolute;
+			top: 0;
+			left: 50%;
+			translate: -50% -50%;
+		}
+		picture img{
+			width: 135px;
+			height: 135px;
+			border: 4px solid #0076B1;
+			border: 4px solid var(--color-secondary);
+			border-radius: 50%;
+		}
+		.content-wrapper{
+			width: fit-content;
+		}
 	</style>
 </svelte:head>
 
