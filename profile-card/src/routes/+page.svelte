@@ -5,8 +5,8 @@
   console.log(me)
 </script>
 <div id="container">
-    <section class="profile-card">
-        <picture>
+    <section class="profile-card" style="view-transition-name: card">
+        <picture style="view-transition-name: mugshot">
             <source srcset="https://fdnd.directus.app/assets/{me.mugshot.id}?width=600&height=600&format=avif" type="image/avif">
             <source srcset="https://fdnd.directus.app/assets/{me.mugshot.id}?width=600&height=600&format=webp" type="image/webp">
             <img src="https://fdnd.directus.app/assets/{me.mugshot.id}?width=600&height=600" alt="test" width="600" height="600">

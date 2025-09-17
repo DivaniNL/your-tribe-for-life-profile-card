@@ -1,0 +1,1 @@
+export {  default as Hobby } from './components/Hobby.svelte'
