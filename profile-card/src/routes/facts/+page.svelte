@@ -119,7 +119,11 @@
         border-collapse: separate;
         border-spacing: 0;
     }
-
+    .content-wrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
     table.table-primary {
         border-radius: 27px;
         overflow: hidden;

@@ -25,12 +25,21 @@
 </div>
 
 <style>
-
+    .content-wrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
     #container{
         max-width: 1024px;
     }
     section.hobbies{
         margin-bottom: 100px;
+    }
+        .content-wrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
     
 </style>
