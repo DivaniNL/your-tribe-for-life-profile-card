@@ -2,14 +2,13 @@
   let { data } = $props();
   let me = data.member;
   import { page } from "$app/state";
-  console.log(me)
 </script>
 <div id="container">
-    <section class="profile-card">
+    <section class="profile-card" style="view-transition-name: card;">
         <picture>
             <source srcset="https://fdnd.directus.app/assets/{me.mugshot.id}?width=600&height=600&format=avif" type="image/avif">
             <source srcset="https://fdnd.directus.app/assets/{me.mugshot.id}?width=600&height=600&format=webp" type="image/webp">
-            <img src="https://fdnd.directus.app/assets/{me.mugshot.id}?width=600&height=600" alt="test" width="600" height="600">
+            <img src="https://fdnd.directus.app/assets/{me.mugshot.id}?width=600&height=600" alt="test" width="600" height="600" style="view-transition-name: mugshot;">
         </picture>
         <div class="content-wrapper">
             <h1 class="title-l">{me.name}</h1>
@@ -72,7 +71,6 @@
     </section>
 </div>
 <style>
-
     nav{
         top: 100%;
         position: absolute;

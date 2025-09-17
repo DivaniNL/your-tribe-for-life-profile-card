@@ -4,8 +4,8 @@
 </script>
 
 <div id="container">
-    <section class="profile-card">
-        <picture>
+    <section class="profile-card" style="view-transition-name: card;">
+        <picture style="view-transition-name: mugshot;">
             <source
                 srcset="https://fdnd.directus.app/assets/{data.person.mugshot
                     .id}?width=600&height=600&format=avif"
@@ -22,6 +22,7 @@
                 alt="test"
                 width="600"
                 height="600"
+                
             />
         </picture>
         <div class="content-wrapper">

@@ -4,8 +4,8 @@
   console.log(data.person)
 </script>
 <div id="container">
-    <section class="profile-card">
-        <picture>
+    <section class="profile-card" style="view-transition-name: card;">
+        <picture style="view-transition-name: mugshot;">
             <source srcset="https://fdnd.directus.app/assets/{data.person.mugshot.id}?width=600&height=600&format=avif" type="image/avif">
             <source srcset="https://fdnd.directus.app/assets/{data.person.mugshot.id}?width=600&height=600&format=webp" type="image/webp">
             <img src="https://fdnd.directus.app/assets/{data.person.mugshot.id}?width=600&height=600" alt="test" width="600" height="600">
@@ -16,13 +16,13 @@
         </div>
     </section>
     <section class="hobbies">
-        {#each hobbies as hobby}
-            <article class="card-hobby">
+        {#each hobbies as hobby, i}
+            <article class="card-hobby" >
                 {#if hobby.titel }
                         <h2 class="title-m">{hobby.titel}</h2>
                     {/if }
                     {@html hobby.content}
-                    {#if hobby.afbeelding }
+                    {#if hobby.afbeelding } 
                         <figure>
                             <img src="{hobby.afbeelding[0]['src']}" alt="{hobby.afbeelding[0].afbeelding_alt}" title="{hobby.afbeelding[0].afbeelding_titel}">
                             <figcaption>{hobby.afbeelding[0].caption}</figcaption>
@@ -30,14 +30,18 @@
                     {/if }
             </article>
         {/each}
+        
     </section>
 
 </div>
 
 <style>
-
+    body{
+        /* overflow-x: hidden; */
+    }
     #container{
         max-width: 1024px;
+        
     }
     section.hobbies{
         margin-bottom: 100px;
@@ -72,6 +76,37 @@
 
         &:not(:last-child){
             margin-bottom: 10px;
+        }
+    }
+    @keyframes animate-left {
+        0% { 
+            translate: -100vw 0;
+            opacity: 0;
+        }
+        100% { 
+            opacity: 1; 
+            translate: 0 0;
+        }
+    }
+    @keyframes animate-right{
+        0% { 
+            translate: 100vw 0;
+            opacity: 0;
+        }
+        100% { 
+            opacity: 1; 
+            translate: 0 0;
+        }
+    }
+    .card-hobby{
+        animation: animate-left 2s linear;
+        animation-timeline: view();
+        animation-range: entry, exit;
+        &:nth-child(even){
+
+            animation: animate-right 2s linear backwards;
+            animation-timeline: view();
+            animation-range: 20%, 50%;
         }
     }
 </style>
