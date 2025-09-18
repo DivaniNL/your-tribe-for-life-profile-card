@@ -11,7 +11,7 @@
             <source srcset="https://fdnd.directus.app/assets/{data.person.mugshot.id}?width=600&height=600&format=webp" type="image/webp">
             <img src="https://fdnd.directus.app/assets/{data.person.mugshot.id}?width=600&height=600" alt="test" width="600" height="600">
         </picture>
-        <div class="content-wrapper">
+        <div class="content-wrapper flex-v-center">
             <h1 class="title-l">Hobby's</h1>
             <p class="text-l">Hieronder mijn Hobby's</p>
         </div>
@@ -25,21 +25,12 @@
 </div>
 
 <style>
-    .content-wrapper{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+
     #container{
         max-width: 1024px;
     }
     section.hobbies{
         margin-bottom: 100px;
-    }
-        .content-wrapper{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
     }
     
 </style>

@@ -71,6 +71,11 @@
 			padding: 0;
 			margin: 0;
 		}
+		.flex-v-center{ /* vertical flex with horizontal centering */
+			display: flex; 
+			flex-direction: column; 
+			align-items: center; 
+		}
 		/* svg > * {
 			fill: black;
 		} */

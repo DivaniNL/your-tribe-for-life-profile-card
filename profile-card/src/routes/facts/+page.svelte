@@ -67,7 +67,7 @@
                 height="600"
             />
         </picture>
-        <div class="content-wrapper">
+        <div class="content-wrapper flex-v-center">
             <h1 class="title-l">Feitjes</h1>
             <p class="text-l">Hieronder feitjes over mij</p>
         </div>
@@ -118,11 +118,6 @@
     table {
         border-collapse: separate;
         border-spacing: 0;
-    }
-    .content-wrapper{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
     }
     table.table-primary {
         border-radius: 27px;

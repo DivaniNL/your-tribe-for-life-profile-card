@@ -24,7 +24,7 @@
                 height="600"
             />
         </picture>
-        <div class="content-wrapper">
+        <div class="content-wrapper flex-v-center">
             <h1 class="title-l">Opleidingen</h1>
             <p class="text-l">Hieronder mijn Opleidingen</p>
         </div>
