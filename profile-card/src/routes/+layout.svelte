@@ -134,7 +134,7 @@
 			width: fit-content;
 		}
 		.breadcrumbs {
-			margin: 0.3em 0 .3em 1.5rem;
+			margin: 0 0 .3em 0;
 		}
 
 		.breadcrumbs a{
@@ -151,7 +151,7 @@
 			.breadcrumbs{
 				position: absolute;
 				top: 15px;
-				left: 10px;
+				left: 15px;
 			}
 		}
 	</style>
