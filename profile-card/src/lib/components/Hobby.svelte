@@ -1,9 +1,9 @@
 <script>
-    const { hobby } =  $props()
+    const { hobby,i } =  $props()
 </script>
 
 
-<article class="card-hobby">
+<article class="card-hobby animation-slide-in--up" style="--delay: {i * 0.5 + 0.2}s;">
     {#if hobby.titel }
             <h2 class="title-m">{hobby.titel}</h2>
         {/if }

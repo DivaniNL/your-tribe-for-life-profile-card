@@ -23,8 +23,8 @@
         </div>
     </section>
     <section class="hobbies">
-        {#each hobbies as hobby}
-           <Hobby {hobby}/>
+        {#each hobbies as hobby, i}
+           <Hobby {hobby} {i}/>
         {/each}
     </section>
 
