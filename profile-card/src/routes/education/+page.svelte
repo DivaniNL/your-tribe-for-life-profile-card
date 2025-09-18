@@ -5,6 +5,12 @@
 
 <div id="container">
     <section class="profile-card" style="view-transition-name: card">
+        <div class="breadcrumbs">
+            <p>
+                <a href="/" class="home-link" aria-current="false">Home</a> &gt;
+                <a href="#" class="detail-link" aria-current="true">Opleidingen</a>
+            </p>
+        </div>
         <picture style="view-transition-name: mugshot">
             <source
                 srcset="https://fdnd.directus.app/assets/{data.person.mugshot

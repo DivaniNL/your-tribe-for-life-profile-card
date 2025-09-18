@@ -6,6 +6,12 @@
 </script>
 <div id="container">
     <section class="profile-card" style="view-transition-name: card">
+        <div class="breadcrumbs">
+            <p>
+                <a href="/" class="home-link" aria-current="false">Home</a> &gt;
+                <a href="#" class="detail-link" aria-current="true">Hobby's</a>
+            </p>
+        </div>
         <picture style="view-transition-name: mugshot">
             <source srcset="https://fdnd.directus.app/assets/{data.person.mugshot.id}?width=600&height=600&format=avif" type="image/avif">
             <source srcset="https://fdnd.directus.app/assets/{data.person.mugshot.id}?width=600&height=600&format=webp" type="image/webp">

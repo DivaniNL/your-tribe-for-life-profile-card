@@ -133,6 +133,27 @@
 		.content-wrapper{
 			width: fit-content;
 		}
+		.breadcrumbs {
+			margin: 0.3em 0 .3em 1.5rem;
+		}
+
+		.breadcrumbs a{
+			color: white;
+		}
+		.breadcrumbs a:hover, .breadcrumbs a:focus{
+			text-decoration: underline;
+		}
+
+		.breadcrumbs a[aria-current="true"]{
+			color: #fffc86
+		}
+		@media (min-width: 750px){
+			.breadcrumbs{
+				position: absolute;
+				top: 15px;
+				left: 10px;
+			}
+		}
 	</style>
 </svelte:head>
 
